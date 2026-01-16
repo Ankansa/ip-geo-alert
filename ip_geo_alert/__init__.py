@@ -7,7 +7,7 @@ from .rules import EndpointRuleEngine
 LOCAL_IPS = {"127.0.0.1", "::1", "localhost", "unknown"}
 
 
-def process_request(
+async def process_request(
     request: Request,
     send_mail_func,
     rule_engine: EndpointRuleEngine,
@@ -34,7 +34,7 @@ def process_request(
 
     geo_data = get_ip_location(ip)
 
-    notify_via_email(geo_data, send_mail_func)
+    await notify_via_email(geo_data, send_mail_func)
 
     return {
         "triggered": True,
