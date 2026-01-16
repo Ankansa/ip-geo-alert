@@ -1,4 +1,4 @@
-def notify_via_email(geo_data: dict, send_mail_func):
+async def notify_via_email(geo_data: dict, send_mail_func):
     """
     Calls user-provided mail function.
     """
@@ -15,4 +15,4 @@ Latitude: {geo_data.get('lat')}
 Longitude: {geo_data.get('lon')}
 """
 
-    send_mail_func(subject.strip(), body.strip())
+    await send_mail_func(subject.strip(), body.strip())
